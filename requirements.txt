@@ -1,0 +1,9 @@
+torch
+streamlit
+transformers
+pandas
+sentencepiece
+scipy
+soundfile
+
+
