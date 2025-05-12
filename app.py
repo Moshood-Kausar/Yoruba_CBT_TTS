@@ -1,6 +1,6 @@
+import torch
 import streamlit as st
 import pandas as pd
-import torch
 from transformers import AutoTokenizer, AutoModelForTextToWaveform
 import soundfile as sf
 import os
