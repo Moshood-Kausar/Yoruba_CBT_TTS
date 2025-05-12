@@ -1,12 +1,16 @@
-
-# tts.py
+import os
 import requests
 
-API_URL = "https://api-inference.huggingface.co/models/facebook/tts_transformer-yor-eng-ft-lyr"
-HF_TOKEN = "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" 
+API_URL = "https://api-inference.huggingface.co/models/facebook/mms-tts-yor"
+headers = {
+    "Authorization": f"Bearer {os.getenv('HF_TOKEN')}",
+    "Content-Type": "application/json"
+}
 
-headers = {"Authorization": f"Bearer {HF_TOKEN}"}
+def query(payload):
+    response = requests.post(API_URL, headers=headers, json=payload)
+    return response.content  # raw audio (MP3 format)
 
-def generate_audio(text: str):
-    response = requests.post(API_URL, headers=headers, json={"inputs": text})
-    return response.content
+def get_audio_from_text(text):
+    audio_data = query({"inputs": text})
+    return audio_data
