@@ -4,6 +4,7 @@ import pandas as pd
 from transformers import AutoTokenizer, AutoModelForTextToWaveform
 import soundfile as sf
 import os
+import streamlit.components.v1 as components
 
 # Load Yoruba TTS model
 @st.cache_resource
@@ -84,6 +85,26 @@ if question_index < total_questions:
     if st.button("Tẹsiwaju si Ibéèrè Tó Kàn"):
         st.session_state.question_index += 1
         os.remove(audio_path)
+        
+    components.html(
+    """
+    <script>
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "ArrowRight") {
+                // Simulate a click on the continue button
+                const btns = window.parent.document.querySelectorAll('button');
+                for (let btn of btns) {
+                    if (btn.innerText.includes("Tẹsiwaju")) {
+                        btn.click();
+                        break;
+                    }
+                }
+            }
+        });
+    </script>
+    """,
+    height=0,
+)    
 
     # Progress indicator
     st.markdown(
@@ -94,3 +115,6 @@ if question_index < total_questions:
 else:
     st.success("🎉 O ti pari gbogbo awọn ibeere naa! 👏")
     st.balloons()
+
+ 
+    
