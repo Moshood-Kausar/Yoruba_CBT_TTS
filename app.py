@@ -55,10 +55,10 @@ if question_index < total_questions:
     # Prepare question text with Yoruba label
     question_text = (
         f"Ibéèrè {yoruba_label}: {selected_question['question']}... "
-        f"A... , {selected_question['option_a']}... "
-        f"B... , {selected_question['option_b']}... "
-        f"C... , {selected_question['option_c']}... "
-        f"D... , {selected_question['option_d']}."
+        f"A..., {selected_question['option_a']}... "
+        f"B..., {selected_question['option_b']}... "
+        f"C..., {selected_question['option_c']}... "
+        f"D..., {selected_question['option_d']}."
     )
 
     # Play TTS
@@ -86,25 +86,25 @@ if question_index < total_questions:
         st.session_state.question_index += 1
         os.remove(audio_path)
         
-    components.html(
-    """
-    <script>
-        document.addEventListener("keydown", function(event) {
-            if (event.key === "ArrowRight") {
-                // Simulate a click on the continue button
-                const btns = window.parent.document.querySelectorAll('button');
-                for (let btn of btns) {
-                    if (btn.innerText.includes("Tẹsiwaju")) {
-                        btn.click();
-                        break;
+        components.html(
+        """
+        <script>
+            document.addEventListener("keydown", function(event) {
+                if (event.key === "ArrowRight") {
+                    // Simulate a click on the continue button
+                    const btns = window.parent.document.querySelectorAll('button');
+                    for (let btn of btns) {
+                        if (btn.innerText.includes("Tẹsiwaju")) {
+                            btn.click();
+                            break;
+                        }
                     }
                 }
-            }
-        });
-    </script>
-    """,
-    height=0,
-)    
+            });
+        </script>
+        """,
+        height=0,
+    )    
 
     # Progress indicator
     st.markdown(
