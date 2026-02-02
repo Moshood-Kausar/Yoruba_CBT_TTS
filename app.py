@@ -38,7 +38,7 @@ def generate_audio(text, filename="generated.wav"):
     return filename
 
 # Streamlit UI
-st.title("📣 Yoruba CBT TTS App")
+st.title("Yoruba CBT TTS App")
 st.subheader("Practice WAEC Yoruba Questions with Voice")
 
 # Track question index
